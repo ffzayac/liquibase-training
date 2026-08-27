@@ -2,6 +2,8 @@ services:
   postgres:
     image: postgres:16
     container_name: liquibase-training-postgres
+    env_file:
+      - .env
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -25,6 +27,8 @@ services:
         condition: service_healthy
     volumes:
       - ./changelog:/liquibase/changelog:ro
+    env_file:
+      - .env
     environment:
       LIQUIBASE_COMMAND_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
       LIQUIBASE_COMMAND_USERNAME: ${POSTGRES_USER}
