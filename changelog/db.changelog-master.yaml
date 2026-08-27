@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - include:
+      file: changes/001-create-schema.sql
+
+  - include:
+      file: changes/002-create-client.sql
+
+  - include:
+      file: changes/003-create-account.sql
+
+  - include:
+      file: changes/004-add-client-status.sql
+
+  - include:
+      file: changes/005-insert-demo-client.sql
