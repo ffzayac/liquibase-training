@@ -27,6 +27,7 @@ services:
         condition: service_healthy
     volumes:
       - ./changelog:/liquibase/changelog:ro
+      - ./drivers:/liquibase/drivers:ro
     env_file:
       - .env
     environment:
@@ -34,6 +35,8 @@ services:
       LIQUIBASE_COMMAND_USERNAME: ${POSTGRES_USER}
       LIQUIBASE_COMMAND_PASSWORD: ${POSTGRES_PASSWORD}
       LIQUIBASE_COMMAND_CHANGELOG_FILE: db.changelog-master.sql
+      LIQUIBASE_COMMAND_DRIVER: org.postgresql.Driver
+      LIQUIBASE_COMMAND_CLASSPATH: /liquibase/drivers/postgresql-42.7.13.jar
     working_dir: /liquibase/changelog
 
 volumes:
